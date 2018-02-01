@@ -17,15 +17,18 @@ if(isset($_POST['usernamesignup'])) {
 	$password = $_POST['passwordsignup'];
 	$confirm_password = $_POST['passwordsignup_confirm'];
 	
-	$sql = "INSERT INTO accounts (username, email,password,confirm_password)
-	VALUES ('".$username."','".$email."','".$password."','".$confirm_password."')";
+	if($password === $confirm_password) {
+		$sql = "INSERT INTO accounts (username, email,password,confirm_password)
+		VALUES ('".$username."','".$email."','".$password."','".$confirm_password."')";
 
-	if ($conn->query($sql) === TRUE) {
-		header("Location: http://localhost/pickItUp/main.html", true, 301);
-		exit();
-	} else {
-		echo "Error: " . $sql . "<br>" . $conn->error;
+		if ($conn->query($sql) === TRUE) {
+			header("Location: http://localhost/pickItUp/main.html", true, 301);
+			exit();
+		} else {
+			echo "Error: " . $sql . "<br>" . $conn->error;
+		}
 	}
+	
 
 }
 
