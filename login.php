@@ -25,7 +25,8 @@ if ($result->num_rows > 0){
 	header("Location: http://localhost/pickItUp/main.html", true, 301);
 		exit();
 }else{
-	echo "0 results";
+	//echo "0 results";
+    header("Location: http://localhost/pickItUp/index.html");
 }
 $conn->close();
 
