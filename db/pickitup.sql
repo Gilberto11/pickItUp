@@ -20,25 +20,16 @@ CREATE TABLE `accounts` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
+  `PASSWORD` varchar(255) DEFAULT NULL,
   `confirm_password` varchar(255) DEFAULT NULL,
+  `user_hash` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `accounts` */
 
-insert  into `accounts`(`ID`,`username`,`email`,`password`,`confirm_password`) values 
-(1,'John','john@example.com','',''),
-(2,'jose','jose@hotmail.com','123','123'),
-(3,'gil','jose@hotmail.com','123','123'),
-(4,'giltest','providenttesting@gmail.com','blabla','blabla'),
-(5,'patrick','patrick@hotmail.com','123','123'),
-(6,'test3','test3@gmail.com','123','123'),
-(7,'adonis','adonis@gmail.com','123','1234'),
-(8,'adonis','adonis@gmail.com','45','4534345'),
-(9,'rodgers','rogders@gmail.com','123','123'),
-(10,'blablabla','blabla@hotmail.com','123','123'),
-(11,'blablabla2','blabla@hotmail.com','1234','1234');
+insert  into `accounts`(`ID`,`username`,`email`,`PASSWORD`,`confirm_password`,`user_hash`) values 
+(1,'gil','gil@hotmail.com','202cb962ac59075b964b07152d234b70','202cb962ac59075b964b07152d234b70','28899');
 
 /*Table structure for table `products` */
 
