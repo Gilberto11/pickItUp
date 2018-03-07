@@ -1,7 +1,7 @@
 
 
 <?php
-//  Title: To do List
+//  Title: Connect PHP
 //   Author: w3schools
 
 $servername = "localhost";
