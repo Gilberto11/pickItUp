@@ -23,12 +23,12 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0){
 	while($row = $result->fetch_assoc()) {
-		header("Location: http://localhost/pickItUp/main.html#".$row['user_hash'], true, 301);
+		header("Location: http://localhost:8888/pickItUp/main.html#".$row['user_hash'], true, 301);
 		exit();
 	}
 }else{
 	//echo "0 results";
-    header("Location: http://localhost/pickItUp/index.html");
+    header("Location: http://localhost:8888/pickItUp/index.html");
 }
 $conn->close();
 

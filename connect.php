@@ -1,4 +1,9 @@
+
+
 <?php
+//  Title: Connect PHP
+//   Author: w3schools
+
 $servername = "localhost";
 $username = "root";
 $password = "root";
@@ -22,7 +27,7 @@ if(isset($_POST['usernamesignup'])) {
 		VALUES ('".$username."','".$email."','".md5($password)."','".md5($confirm_password)."','".rand()."')";
 
 		if ($conn->query($sql) === TRUE) {
-			header("Location: http://localhost/pickItUp/main.html", true, 301);
+			header("Location: http://localhost:8888/pickItUp/main.html", true, 301);
 			exit();
 		} else {
 		
