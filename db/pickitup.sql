@@ -17,19 +17,51 @@ MySQL - 5.7.20-log : Database - pickitup
 DROP TABLE IF EXISTS `accounts`;
 
 CREATE TABLE `accounts` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `account_id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `PASSWORD` varchar(255) DEFAULT NULL,
   `confirm_password` varchar(255) DEFAULT NULL,
   `user_hash` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`account_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `accounts` */
 
-insert  into `accounts`(`ID`,`username`,`email`,`PASSWORD`,`confirm_password`,`user_hash`) values 
-(1,'gil','gil@hotmail.com','202cb962ac59075b964b07152d234b70','202cb962ac59075b964b07152d234b70','28899');
+insert  into `accounts`(`account_id`,`username`,`email`,`PASSWORD`,`confirm_password`,`user_hash`) values 
+(1,'gil','gilberto@hotmail.com','202cb962ac59075b964b07152d234b70','202cb962ac59075b964b07152d234b70','28971');
+
+/*Table structure for table `items` */
+
+DROP TABLE IF EXISTS `items`;
+
+CREATE TABLE `items` (
+  `item_id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_name` varchar(255) DEFAULT NULL,
+  `list_id` int(11) DEFAULT NULL,
+  `account_id` int(11) DEFAULT NULL,
+  `done` tinyint(1) NOT NULL,
+  PRIMARY KEY (`item_id`),
+  KEY `account_id` (`account_id`),
+  CONSTRAINT `items_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `items` */
+
+/*Table structure for table `lists` */
+
+DROP TABLE IF EXISTS `lists`;
+
+CREATE TABLE `lists` (
+  `list_id` int(11) NOT NULL AUTO_INCREMENT,
+  `list_name` varchar(255) DEFAULT NULL,
+  `account_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`list_id`),
+  KEY `account_id` (`account_id`),
+  CONSTRAINT `lists_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `lists` */
 
 /*Table structure for table `products` */
 
@@ -37,12 +69,12 @@ DROP TABLE IF EXISTS `products`;
 
 CREATE TABLE `products` (
   `product_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ID` int(11) DEFAULT NULL,
+  `account_id` int(11) DEFAULT NULL,
   `product_name` varchar(255) DEFAULT NULL,
   `product_bought` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`product_ID`),
-  KEY `ID` (`ID`),
-  CONSTRAINT `products_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `accounts` (`ID`)
+  KEY `account_id` (`account_id`),
+  CONSTRAINT `products_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `products` */
